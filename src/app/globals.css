@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: oklch(0.97 0.02 250);
+  --color-brand-100: oklch(0.93 0.04 255);
+  --color-brand-200: oklch(0.87 0.07 258);
+  --color-brand-400: oklch(0.7 0.13 262);
+  --color-brand-500: oklch(0.62 0.16 264);
+  --color-brand-600: oklch(0.54 0.17 265);
+  --color-brand-700: oklch(0.46 0.15 266);
+  --color-brand-900: oklch(0.3 0.09 267);
+
+  /* Minimum comfortable touch target; the product is used on an iPad. */
+  --spacing-touch: 2.75rem;
+}
+
+:root {
+  --background: oklch(0.985 0.004 250);
+  --foreground: oklch(0.21 0.02 258);
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.96 0.006 255);
+  --border: oklch(0.9 0.01 255);
+  --muted: oklch(0.51 0.02 258);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.17 0.02 260);
+    --foreground: oklch(0.95 0.01 255);
+    --surface: oklch(0.22 0.02 260);
+    --surface-muted: oklch(0.26 0.02 260);
+    --border: oklch(0.32 0.02 260);
+    --muted: oklch(0.71 0.02 255);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+}
+
+html {
+  /* Stop iOS Safari inflating text in landscape. */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Teaching prose is read at arm's length on a tablet, so it is set larger and
+   looser than the rest of the interface. */
+.teaching-prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  .teaching-prose {
+    font-size: 1.1875rem;
+    line-height: 1.8;
+  }
+}
+
+/* Inputs below 16px make iOS zoom the viewport on focus. */
+input,
+textarea,
+select {
+  font-size: max(1rem, 16px);
+}
